@@ -1,5 +1,7 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @runs = Run.all
@@ -9,16 +11,16 @@ class RunsController < ApplicationController
   end
 
   def new
-    @run = Run.new
+    @run = current_user.runs.build
   end
 
   def edit
   end
 
   def create
-    @run = Run.new(run_params)
+    @run = current_user.runs.build(run_params)
       if @run.save
-        redirect_to @run, notice: 'Run was successfully created.' 
+        redirect_to @run, notice: 'Run was successfully uploaded.' 
       else
          render :new 
       end
@@ -33,18 +35,24 @@ class RunsController < ApplicationController
   end
 
   def destroy
-    @run.destroy
+    @run.destroys
       redirect_to runs_url, notice: 'Run was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_run
-      @run = Run.find(params[:id])
+      @run = Run.find_by(id: params[:id])
     end
+
+  def correct_user
+    @run = current_user.runs.find_by(id: params[:id])
+    redirect_to runs_path, notice: "Not authorized to edit this run" if @run.nil?
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
       params.require(:run).permit(:distance, :date)
     end
+
 end

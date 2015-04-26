@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= link_to runs_path do %>
+	<span class="glyphicon glyphicon-chevron-left"></span>Back
+<% end %>
 
-<p>
-  <strong>Distance:</strong>
-  <%= @run.distance %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @run.date %>
-</p>
-
-<%= link_to 'Edit', edit_run_path(@run) %> |
-<%= link_to 'Back', runs_path %>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+		<div class="panel-heading center">
+		</div>
+			<div class="panel-body">
+				<%= image_tag(current_user.avatar.url(:thumb)) %></br>
+				<p><strong><%= @run.user.name if @run.user %></strong></p>
+				<p><strong>Distance: </strong><%= @run.distance %></p>
+				<p><strong>Date: </strong><%= @run.date %></p>				
+				<% if current_user && @run_user == current_user %>
+					<%= link_to edit_run_path(@run) do %> |
+						<span class="glyphicon glyphicon-edit"></span>Edit
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
