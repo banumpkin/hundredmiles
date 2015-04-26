@@ -2,14 +2,17 @@
 
 <div id="runs" class="transitions-enabled">
     <% @runs.each do |run| %>
-       <div class="box panel-default">
-      <div class="panel-body">
-        <%= image_tag(current_user.avatar.url(:thumb)) %></br>
+      <div class="box panel panel-default">
+        <%= image_tag(current_user.avatar.url(:medium)) %>
+        <div class="panel-body">
         <strong><%= run.user.name if run.user %></strong></br>
         <strong>Distance:</strong> <%= run.distance %><br/>
         <strong>Date:</strong> <%= run.date %><br/>
         <% if current_user && run.user == current_user %>
         <div class="actions">
+          <%= link_to run_path(run) do %> 
+          <span class="glyphicon glyphicon-eye-open"></span>Show
+          <% end %>
           <%= link_to edit_run_path(run) do %>
           <span class="glyphicon glyphicon-edit"></span>Edit
           <% end %>
@@ -22,6 +25,7 @@
     </div>
   <% end %>
 </div>
+
 <br>
 <% if user_signed_in? %>
   <%= link_to 'New Run', new_run_path %>
