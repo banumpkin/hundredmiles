@@ -4,7 +4,7 @@ class RunsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @runs = Run.all
+    @runs = Run.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   def show
@@ -35,9 +35,10 @@ class RunsController < ApplicationController
   end
 
   def destroy
-    @run.destroys
-      redirect_to runs_url, notice: 'Run was successfully destroyed.'
+    @run.destroy
+    redirect_to runs_url
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -52,7 +53,7 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:distance, :date)
+      params.require(:run).permit(:distance, :date, :image)
     end
 
 end
