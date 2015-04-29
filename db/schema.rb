@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427005436) do
+ActiveRecord::Schema.define(version: 20150429025219) do
 
   create_table "runs", force: true do |t|
     t.decimal  "distance"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150427005436) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "pace"
   end
 
   add_index "runs", ["user_id"], name: "index_runs_on_user_id"

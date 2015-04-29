@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "runs#index"
   get "about" => "pages#about"
+  get "myruns" => "runs#myruns"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

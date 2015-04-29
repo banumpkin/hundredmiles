@@ -1,5 +1,5 @@
 class RunsController < ApplicationController
-  before_action :set_run, only: [:show, :edit, :update, :destroy]
+  before_action :set_run, only: [:show, :edit, :update, :destroy, :myruns]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -8,6 +8,10 @@ class RunsController < ApplicationController
   end
 
   def show
+  end
+
+  def myruns
+    @runs = current_user.runs.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
 
   def new
@@ -53,7 +57,7 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:distance, :date, :image)
+      params.require(:run).permit(:distance, :date, :image, :pace)
     end
 
 end

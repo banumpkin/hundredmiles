@@ -1,7 +1,7 @@
-<%= render 'pages/home' unless user_signed_in? %>
-
+<h1>My Runs</h1>
 <div id="runs" class="transitions-enabled">
     <% @runs.each do |run| %>
+    <% if current_user && run.user == current_user %>
       <div class="box panel-default">
         <% if run.image? %>
         <%= link_to image_tag(run.image.url(:medium)), run %>
@@ -13,7 +13,6 @@
         <strong>Distance:</strong> <%= run.distance %><br/>
         <strong>Pace:</strong> <%= run.pace %><br/>
         <strong>Date:</strong> <%= run.date %><br/>
-        <% if current_user && run.user == current_user %>
         <div class="actions">
           <%= link_to edit_run_path(run) do %>
           <span class="glyphicon glyphicon-edit"></span>Edit
@@ -22,9 +21,9 @@
           <span class="glyphicon glyphicon-trash"></span>Delete
           <% end %>
         </div>
-        <% end %>
       </div>
     </div>
+  <% end %>
   <% end %>
 </div>
 
