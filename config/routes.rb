@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   resources :runs
 
   devise_for :users
   root "runs#index"
   get "about" => "pages#about"
   get "myruns" => "runs#myruns"
+  get "/:id" => "profiles#show"
+  #get "userruns" => "runs#userruns" #/users/:id/runs"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
