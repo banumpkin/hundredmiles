@@ -12,7 +12,7 @@
         <strong><%= run.user.name if run.user %></strong></br>
         <strong>Distance:</strong> <%= run.distance %><br/>
         <strong>Pace:</strong> <%= run.pace %><br/>
-        <strong>Date:</strong> <%= run.date %><br/>
+        <strong>Date:</strong> <%= run.date.strftime("%m/%d/%Y") %><br/>
         <% if current_user && run.user == current_user %>
         <div class="actions">
           <%= link_to edit_run_path(run) do %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root "runs#index"
   get "about" => "pages#about"
   get "myruns" => "runs#myruns"
+  get "summ" => "runs#summ"
   get "/:id" => "profiles#show"
   #get "userruns" => "runs#userruns" #/users/:id/runs"
   # The priority is based upon order of creation: first created -> highest priority.

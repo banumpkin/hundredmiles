@@ -10,6 +10,11 @@ class RunsController < ApplicationController
   def show
   end
 
+  def summ
+    @users = User.all
+    @runs = Run.select("date(date) as Month, sum(distance) as total_miles").group("date(date), user") 
+  end
+
   def myruns
     @runs = current_user.runs.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
   end
