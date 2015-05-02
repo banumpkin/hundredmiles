@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429025219) do
+ActiveRecord::Schema.define(version: 20150502050549) do
 
   create_table "runs", force: true do |t|
     t.decimal  "distance"
-    t.date     "date"
+    t.date     "rundate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

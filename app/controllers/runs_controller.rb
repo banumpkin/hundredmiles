@@ -12,7 +12,7 @@ class RunsController < ApplicationController
 
   def summ
     @users = User.all
-    @runs = Run.select("date(date) as Month, sum(distance) as total_miles").group("date(date), user") 
+    @runs = Run.all
   end
 
   def myruns
@@ -62,7 +62,7 @@ class RunsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def run_params
-      params.require(:run).permit(:distance, :date, :image, :pace)
+      params.require(:run).permit(:distance, :rundate, :image, :pace)
     end
 
 end
