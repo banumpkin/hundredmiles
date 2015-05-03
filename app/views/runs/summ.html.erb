@@ -1,9 +1,9 @@
-<% month = @runs.find_by_sql("SELECT DISTINCT strftime('%Y-%m', rundate) from runs; ")
+<% month = @runs.find_by_sql("SELECT DISTINCT date_part('month', rundate) from runs; ")
    month.each do |m|%>
-   <strong>Month: </strong> <%= puts m %></br>
-	<% @users.each do |user|%>
-		 <strong>Runner: </strong><%= user.name %> </br>
+   <strong>Month: </strong> <%= m %></br>
+	<% @users.each do |u|%>
+		 <strong>Runner: </strong><%= u.name %> </br>
 		 <strong>Monthly Miles: </strong>
-		 <%= user.runs.where("strftime('%Y-%m', rundate) = '2015-03'").sum(:distance) %></br>
+		 <%= u.runs.where("date_part('month', rundate) = '05'").sum(:distance)  %></br>
 	<% end %>
 <% end %>
