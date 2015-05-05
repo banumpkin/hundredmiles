@@ -1,13 +1,21 @@
 <% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month")
    months.each do |m|%>
+   	<div class="col-md-offset-4 col-md-4">
+		<div class="panel panel-default">
+		<div class="panel-heading center">
    <strong><font size=3><%= m.month.strftime("%B %Y") %></font></strong></br>
+     <div class="panel panel-default">
       <% @users.each do |u|%>
-		 <strong><%= u.name %>: </strong>
 		 <% miles = @runs.select("DATE_TRUNC('month', rundate) AS month, user_id, COALESCE(sum(distance),0) as miles").where("DATE_TRUNC('month', rundate) = (?) and user_id = (?)", m.month, u.id).group("DATE_TRUNC('month', rundate), user_id")
 		 miles.each do |x|%>
+		 	<strong><%= u.name if !x.miles.nil? %>: </strong>
 			 <%= x.miles %></br>
-		 <% end %>
+		 <% end %>		
 	  <% end %>
+	  </div>
 	  </br>
+	</div>
+	</div>
+	</div>
 <% end %>
 
