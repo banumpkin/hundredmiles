@@ -13,6 +13,8 @@ $jumbotron-color:			 #383838 ;
 $btn-primary-bg:			 #2ecc71;
 /*$btn-primary-color:			 #383838 ;*/
 $btn-primary-border:		 darken($btn-primary-bg, 20%);
+$panel-primary-heading-bg:   #2ecc71;
+
 
 @import "bootstrap-sprockets"; 
 @import 'bootstrap';
