@@ -1,29 +1,30 @@
 <h1><center>Total Mileage per Month</h1></center>
-<div id="runs" class="transitions-enabled">
-<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month")
-   months.each do |m|%>
-  <div class="box panel-default">
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<%= image_tag("calendar.jpg") %></br></br>
-		<h3 class="panel-title">
-   <center><strong><font size=4><%= m.month.strftime("%B %Y") %></font></strong></center></h3></div>    
-	<ul class="list-group">
-      <% @users.each do |u|%>       
-		 <% miles = @runs.select("DATE_TRUNC('month', rundate) AS month, user_id, COALESCE(sum(distance),0) as miles").where("DATE_TRUNC('month', rundate) = (?) and user_id = (?)", m.month, u.id).group("DATE_TRUNC('month', rundate), user_id")
-		 miles.each do |x|%>
-		 <% if !x.miles.nil? %>
-		 <li class="list-group-item">
-		 	<strong><%= u.name %>: </strong>
-			 <%= x.miles %> miles</br>
-			</li>
-			<% end %>
-		 <% end %>		 
-	  <% end %>
-	</ul>
-<% end %>
-</div>
-</div>
-</div>
-
+<div id="months" class="transitions-enabled" >
+	<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month")
+	   months.each do |m|%>
+	    <div class="item panel-default">
+	  	<div class = "item-content">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<%= image_tag("calendar.jpg") %></br></br>
+					<h3 class="panel-title">
+	   				<center><strong><font size=4><%= m.month.strftime("%B %Y") %></font></strong></center></h3></div>    
+					<ul class="list-group">
+				      <% @users.each do |u|%>       
+						 <% miles = @runs.select("DATE_TRUNC('month', rundate) AS month, user_id, COALESCE(sum(distance),0) as miles").where("DATE_TRUNC('month', rundate) = (?) and user_id = (?)", m.month, u.id).group("DATE_TRUNC('month', rundate), user_id")
+						 miles.each do |x|%>
+						 <% if !x.miles.nil? %>
+						 <li class="list-group-item">
+						 	<strong><%= u.name %>: </strong>
+							 <%= x.miles %> miles</br>
+							</li>
+							<% end %>
+						 <% end %>		 
+					  <% end %>
+					</ul>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
