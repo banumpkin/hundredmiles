@@ -4,7 +4,7 @@ class RunsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @runs = Run.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @runs = Run.all.order("rundate DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
   def show
@@ -16,7 +16,7 @@ class RunsController < ApplicationController
   end
 
   def myruns
-    @runs = current_user.runs.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @runs = current_user.runs.order("rundate DESC").paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
