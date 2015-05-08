@@ -12,7 +12,10 @@
   <% end %>
   
   <div class="form-group">
-    <%= f.label :image %>
+    <%= f.label :image %><br/>
+    <% if @run.image.exists? %>
+    <%= image_tag @run.image.url(:medium) %>
+    <% end %><br/><br/>
     <%= f.file_field :image, class: "form-control" %>
   </div>
   <div class="form-group">
