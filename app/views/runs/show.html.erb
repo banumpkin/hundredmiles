@@ -6,10 +6,12 @@
 	<div class="col-md-offset-2 col-md-8">
 		<div class="panel panel-default">
 		<div class="panel-heading center">
-		<% if run.image? %>
-        <%= link_to image_tag(run.image.url(:medium)), "/" + run.user_id.to_s %>
+		<% if @run.image? %>
+        <%= link_to image_tag(@run.image.url(:medium)), "/" + @run.user_id.to_s %>
+        <% else run.user.avatar? %>
+        <%= link_to image_tag(@run.user.avatar.url(:medium)), "/" + @run.user_id.to_s %>
         <% else %>
-        <%= link_to image_tag(run.user.avatar.url(:medium)), "/" + run.user_id.to_s %>
+        <%= image_tag("runner.jpg") %>
         <% end %></br>
 		</div>
 			<div class="panel-body">
