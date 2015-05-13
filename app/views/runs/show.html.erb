@@ -18,7 +18,8 @@
 				<p><strong><%= @run.user.name if @run.user %></strong></p>
 				<p><strong>Distance: </strong><%= @run.distance %></p>
 				<p><strong>Pace: </strong><%= @run.pace %></p>
-				<p><strong>Date: </strong><%= @run.rundate.strftime("%m/%d/%Y") %></p>				
+				<p><strong>Date: </strong><%= @run.rundate.strftime("%m/%d/%Y") %></p>			
+				<p><strong>Description: </strong><%= @run.description %></p>
 				<% if current_user && @run.user == current_user %>
 					<%= link_to edit_run_path(@run) do %> 
 						<span class="glyphicon glyphicon-edit"></span>Edit
