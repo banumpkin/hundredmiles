@@ -15,9 +15,9 @@
         <strong>Distance:</strong> <%= run.distance %><br/>
         <strong>Pace:</strong> <%= run.pace %><br/>
         <strong>Date:</strong> <%= run.rundate.strftime("%m/%d/%Y") %><br/>
-        <%# if run.description? %>
+        <% if run.description? %>
         <strong>Description:</strong> <%= run.description %><br/>
-        <%# end %>
+        <% end %>
         <% if current_user && run.user == current_user %>
         <div class="actions">
           <%= link_to edit_run_path(run) do %>

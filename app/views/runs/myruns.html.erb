@@ -15,7 +15,9 @@
         <strong>Distance:</strong> <%= run.distance %><br/>
         <strong>Pace:</strong> <%= run.pace %><br/>
         <strong>Date:</strong> <%= run.rundate.strftime("%m/%d/%Y") %><br/>
+        <% if run.description? %>
         <strong>Description:</strong> <%= run.description %><br/>
+        <% end %>
         <div class="actions">
           <%= link_to edit_run_path(run) do %>
           <span class="glyphicon glyphicon-edit"></span>Edit
