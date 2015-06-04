@@ -11,7 +11,7 @@ class RunsController < ApplicationController
   end
 
   def summ
-    @users = User.all
+    @users = User.all.order("name")
     @runs = Run.all
   end
 
