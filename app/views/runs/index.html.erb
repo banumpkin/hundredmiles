@@ -3,13 +3,15 @@
 <div id="runs" class="transitions-enabled">
     <% @runs.each do |run| %>
       <div class="box panel-default">
+        <% if run.rundate >= Time.now.beginning_of_month - 1.day %>
         <% if run.image? %>
         <%= link_to image_tag(run.image.url(:medium)), "/" + run.user_id.to_s %>
         <% elsif run.user.avatar? %>
         <%= link_to image_tag(run.user.avatar.url(:medium)), "/" + run.user_id.to_s %>
         <% else %>
         <%= image_tag("runner.jpg") %>
-        <% end %></br>        
+        <% end %></br>
+        <% end %>        
         <div class="panel-body">
         <strong><%= run.user.name if run.user %></strong></br>
         <strong>Distance:</strong> <%= run.distance %><br/>
