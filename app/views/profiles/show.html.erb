@@ -3,7 +3,7 @@
     <% if @runs %>
 	<% @runs.each do |run| %>
       <div class="box panel-default">
-        <% if run.rundate >= Time.now.beginning_of_month - 1.day %>
+        <% if run.rundate >= Time.now.beginning_of_month - 1.month %>
         <% if run.image? %>
         <%= link_to image_tag(run.image.url(:medium)), run %>
         <% else %>
