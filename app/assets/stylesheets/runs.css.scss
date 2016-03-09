@@ -21,7 +21,6 @@
 .item,
 .item-content {
   width: 200px;
-  height: 400px;
 }
 
 .item {
@@ -33,7 +32,6 @@
 /* item-content is visible, and transitions size */
 .item-content {
   width: 200px;
-  height: 400px;
   border-radius: 5px;
   -webkit-transition: width 0.4s, height 0.4s;
      -moz-transition: width 0.4s, height 0.4s;

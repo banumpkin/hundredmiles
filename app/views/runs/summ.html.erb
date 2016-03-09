@@ -1,5 +1,5 @@
 <h1><center>Total Mileage per Month</h1></center>
-<div id="months" class="transitions-enabled" >
+<div id="months"  >
 	<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month").order("DATE_TRUNC('month', rundate) desc")
 	   months.each do |m|%>
 	    <div class="item panel-default">
