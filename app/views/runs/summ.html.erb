@@ -1,4 +1,4 @@
-<h1><center>Total Mileage per Month</h1></center>
+<h1><center>Total Miles per Month</h1></center>
 <div id="months" class="transitions-enabled" >
 	<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month").order("DATE_TRUNC('month', rundate) desc")
 	   months.each do |m|%>
