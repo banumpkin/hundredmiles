@@ -11,4 +11,4 @@ $ ->
     $('#months').masonry
       itemSelector: '.item'
       isFitWidth: true     
-      gutterWidth: 30
+      gutterWidth: 40
