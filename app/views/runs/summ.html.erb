@@ -2,7 +2,7 @@
 <div id="months" class="transitions-enabled" >
 	<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month").order("DATE_TRUNC('month', rundate) desc")
 	   months.each do |m|%>
-	    <div class="item panel-default" width:"200" height:"400">
+	    <div class="item panel-default">
 	  	<div class = "item-content">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
