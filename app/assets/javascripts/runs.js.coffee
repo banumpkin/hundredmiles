@@ -9,6 +9,6 @@ $ ->
 $ ->
   $('#months').imagesLoaded ->
     $('#months').masonry
-      itemSelector: '.item'
+      itemSelector: '.box'
       isFitWidth: true     
       gutterWidth: 40
