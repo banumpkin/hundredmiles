@@ -7,9 +7,8 @@ $ ->
       itemSelector: '.box'
       isFitWidth: true
 $ ->
-  #$('#months').imagesLoaded ->
-    $('#months').masonry({
+  $('#months').imagesLoaded ->
+    $('#months').masonry
       itemSelector: '.item'
       isFitWidth: true     
       gutterWidth: 40
-      }).masonry('reload');

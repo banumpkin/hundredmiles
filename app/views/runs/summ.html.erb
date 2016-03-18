@@ -2,8 +2,7 @@
 <div id="months" class="transitions-enabled" >
 	<% months = @runs.select("distinct DATE_TRUNC('month', rundate) AS month").order("DATE_TRUNC('month', rundate) desc")
 	   months.each do |m|%>
-	    <div class="item panel-default">
-	  	<div class = "item-content">
+	    <div class="box panel-default">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<%= image_tag("calendar.jpg") %></br></br>
@@ -24,7 +23,6 @@
 				  <% end %>
 				</ul>
 			</div>
-		</div>
 	   </div>
 	<% end %>
 </div>
